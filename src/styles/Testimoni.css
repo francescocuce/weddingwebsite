@@ -24,7 +24,7 @@
 
 /* Stile della card */
 .card {
-    width: 30%;
+    width: 100%;
     height: 200px;
     perspective: 1000px; /* Necessario per l'effetto 3D */
     cursor: pointer;
