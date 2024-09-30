@@ -41,7 +41,6 @@ const Testimoni = () => {
 
         return () => {
             if (sectionRef.current) {
-                // eslint-disable-next-line react-hooks/exhaustive-deps
                 observer.unobserve(sectionRef.current);
             }
         };
@@ -64,7 +63,7 @@ const Testimoni = () => {
                 {testimoni.map((testimone) => (
                     <div
                         key={testimone.id}
-                        className={`card ${flippedCards[testimone.id] ? 'flipped' : ''}`}
+                        className={`card ${flippedCards[testimone.id] ? 'flipped' : ''}`} // Aggiunge la classe 'flipped' se la carta è girata
                         onClick={() => handleCardClick(testimone.id)}
                     >
                         <div className="card-inner">
