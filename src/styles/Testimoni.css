@@ -26,7 +26,7 @@
 .card {
     width: 120px; 
     height: 180px; 
-    perspective: 1000px; 
+    perspective: 1000px; /* Necessario per l'effetto 3D */
     cursor: pointer;
     border-radius: 10px;
     overflow: hidden;
@@ -59,7 +59,7 @@
     height: 100%;
     position: relative;
     transition: transform 0.8s ease;
-    transform-style: preserve-3d;
+    transform-style: preserve-3d; /* Necessario per la rotazione 3D */
     transform: rotateY(180deg); /* Le carte partono mostrando il retro */
     display: flex;
     flex-direction: column;
@@ -77,7 +77,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    backface-visibility: hidden;
+    backface-visibility: hidden; /* Nascondi la faccia non visibile */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -85,11 +85,11 @@
     border-radius: 10px;
 }
 
-/* Aggiorniamo lo sfondo della faccia posteriore (non trasparente) */
+/* Aggiorniamo lo sfondo della faccia posteriore con un colore visibile */
 .card-back {
     background-color: #8B572A; /* Colore solido */
     color: #fff;
-    transform: rotateY(0deg); /* Rotazione del retro della card */
+    transform: rotateY(180deg); /* Rotazione del retro della card */
 }
 
 .card-front {
