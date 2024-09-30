@@ -35,13 +35,15 @@ const Testimoni = () => {
             { threshold: 0.2 } // La sezione è considerata visibile quando il 20% di essa è nel viewport
         );
 
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
+        const currentSectionRef = sectionRef.current; // Copia il valore di sectionRef.current in una variabile locale
+
+        if (currentSectionRef) {
+            observer.observe(currentSectionRef);
         }
 
         return () => {
-            if (sectionRef.current) {
-                observer.unobserve(sectionRef.current);
+            if (currentSectionRef) {
+                observer.unobserve(currentSectionRef); // Usa la variabile locale nella funzione di cleanup
             }
         };
     }, []);
