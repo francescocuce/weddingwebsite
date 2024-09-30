@@ -87,7 +87,7 @@
 
 /* Aggiorniamo lo sfondo della faccia posteriore (non trasparente) */
 .card-back {
-    background-color: #8b572a; /* Colore solido */
+    background-color: #8B572A; /* Colore solido */
     color: #fff;
     transform: rotateY(0deg); /* Rotazione del retro della card */
 }
