@@ -29,7 +29,7 @@ const Testimoni = () => {
                     if (entry.isIntersecting) {
                         setIsVisible(true);
                     } else {
-                        setIsVisible(false); // Nasconde le carte quando la sezione non è visibile
+                        setIsVisible(false); // Nasconde di nuovo le carte quando si esce dalla sezione
                     }
                 });
             },
