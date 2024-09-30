@@ -17,15 +17,15 @@
 .cards-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 colonne fisse */
-    grid-gap: 20px;
+    grid-gap: 10px; /* Diminuiamo lo spazio tra le carte */
     justify-items: center;
     margin: 0 auto;
 }
 
 /* Stile della card */
 .card {
-    width: 150px; /* Larghezza iniziale */
-    height: 220px;
+    width: 120px; /* Riduciamo la larghezza delle card */
+    height: 180px; /* Riduciamo l'altezza delle card */
     perspective: 1000px;
     cursor: pointer;
     border-radius: 10px;
@@ -41,7 +41,7 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 100px;
+    width: 60px; /* Riduciamo la larghezza dell'immagine */
     height: auto;
     object-fit: cover;
     border-radius: 10px;
@@ -116,13 +116,13 @@
 }
 
 .card-front h3, .card-back h3 {
-    font-size: 16px;
+    font-size: 14px; /* Riduciamo il font */
     margin: 0;
     color: #333;
 }
 
 .card-front p {
-    font-size: 10px;
+    font-size: 10px; /* Manteniamo un testo piccolo */
     margin: 0;
     color: #333;
     text-align: center;
