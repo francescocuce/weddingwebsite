@@ -13,32 +13,18 @@
     transform: translateY(0);
 }
 
-/* Layout a 3 colonne, 2 righe */
+/* Layout a 3 colonne */
 .cards-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 colonne */
+    grid-template-columns: repeat(3, 1fr); /* 3 colonne fisse */
     grid-gap: 20px;
     justify-items: center;
     margin: 0 auto;
 }
 
-/* Responsività - 2 colonne su schermi più piccoli */
-@media (max-width: 768px) {
-    .cards-container {
-        grid-template-columns: repeat(2, 1fr); /* 2 colonne su schermi più piccoli */
-    }
-}
-
-/* Una sola colonna su schermi molto piccoli */
-@media (max-width: 480px) {
-    .cards-container {
-        grid-template-columns: 1fr; /* Una colonna su schermi molto piccoli */
-    }
-}
-
 /* Stile della card */
 .card {
-    width: 150px;
+    width: 150px; /* Larghezza iniziale */
     height: 220px;
     perspective: 1000px;
     cursor: pointer;
@@ -50,7 +36,18 @@
     animation: landing 1s ease forwards;
 }
 
-/* Effetto di atterraggio */
+/* Centra l'immagine */
+.card img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Animazione di atterraggio */
 @keyframes landing {
     0% {
         opacity: 0;
@@ -62,7 +59,7 @@
     }
 }
 
-/* Ritardo progressivo per ogni card */
+/* Ritardo progressivo per l'atterraggio */
 .card:nth-child(1) {
     animation-delay: 0.1s;
 }
@@ -82,16 +79,13 @@
     animation-delay: 0.6s;
 }
 
+/* Centrare i contenuti della card */
 .card-inner {
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     height: 100%;
-    position: relative;
-    transition: transform 0.8s ease;
-    transform-style: preserve-3d;
-}
-
-.card.flipped .card-inner {
-    transform: rotateY(180deg);
 }
 
 .card-front, .card-back {
@@ -106,13 +100,11 @@
     border-radius: 10px;
 }
 
-/* Stile del retro della card */
 .card-back {
     background-color: #8b572a;
     color: #fff;
 }
 
-/* Stile del fronte della card */
 .card-front {
     background-color: rgba(255, 255, 255, 0.42);
     border: 2px solid #e4a96b;
@@ -121,23 +113,6 @@
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     padding: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Stile immagine centrata */
-.card-front img {
-    width: 80px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .card-front h3, .card-back h3 {
