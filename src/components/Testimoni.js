@@ -33,7 +33,7 @@ const Testimoni = () => {
                     }
                 });
             },
-            { threshold: 0.2 } // La sezione è considerata visibile quando il 20% di essa è nel viewport
+            { threshold: 0.5 } // La sezione è considerata visibile quando il 20% di essa è nel viewport
         );
 
         const currentSectionRef = sectionRef.current;
