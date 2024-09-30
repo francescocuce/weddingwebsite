@@ -28,14 +28,15 @@ const Testimoni = () => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
                         setIsVisible(true);
-                        observer.disconnect(); // Una volta visibile, fermiamo l'osservazione
+                    } else {
+                        setIsVisible(false); // Nasconde le carte quando la sezione non è visibile
                     }
                 });
             },
             { threshold: 0.2 } // La sezione è considerata visibile quando il 20% di essa è nel viewport
         );
 
-        const currentSectionRef = sectionRef.current; // Copia il valore di sectionRef.current in una variabile locale
+        const currentSectionRef = sectionRef.current;
 
         if (currentSectionRef) {
             observer.observe(currentSectionRef);
@@ -43,7 +44,7 @@ const Testimoni = () => {
 
         return () => {
             if (currentSectionRef) {
-                observer.unobserve(currentSectionRef); // Usa la variabile locale nella funzione di cleanup
+                observer.unobserve(currentSectionRef);
             }
         };
     }, []);
