@@ -26,14 +26,53 @@
 .card {
     width: 120px; /* Riduciamo la larghezza delle card */
     height: 180px; /* Riduciamo l'altezza delle card */
-    perspective: 1000px;
+    perspective: 1000px; /* Necessario per l'effetto di flip */
     cursor: pointer;
     border-radius: 10px;
     overflow: hidden;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 1s ease-out, transform 1s ease-out;
-    animation: landing 1s ease forwards;
+    transition: transform 0.8s ease; /* Aggiunta transizione per la rotazione */
+}
+
+/* Ruota la card quando viene cliccata */
+.card.flipped .card-inner {
+    transform: rotateY(180deg); /* Rotazione di 180 gradi */
+}
+
+/* Struttura interna della card */
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.8s ease;
+    transform-style: preserve-3d; /* Necessario per mantenere il 3D */
+}
+
+/* Stile delle facce della card */
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Nasconde il retro della card quando è girata */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+.card-back {
+    background-color: #8b572a;
+    color: #fff;
+    transform: rotateY(180deg); /* Rotazione del retro della card */
+}
+
+.card-front {
+    background-color: rgba(255, 255, 255, 0.42);
+    border: 2px solid #e4a96b;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    padding: 10px;
 }
 
 /* Centra l'immagine */
@@ -47,7 +86,21 @@
     border-radius: 10px;
 }
 
-/* Animazione di atterraggio */
+/* Stile del testo */
+.card-front h3, .card-back h3 {
+    font-size: 14px; /* Riduciamo il font */
+    margin: 0;
+    color: #333;
+}
+
+.card-front p {
+    font-size: 10px; /* Manteniamo un testo piccolo */
+    margin: 0;
+    color: #333;
+    text-align: center;
+}
+
+/* Effetto di atterraggio */
 @keyframes landing {
     0% {
         opacity: 0;
@@ -61,69 +114,20 @@
 
 /* Ritardo progressivo per l'atterraggio */
 .card:nth-child(1) {
-    animation-delay: 0.1s;
+    animation-delay: 1s;
 }
 .card:nth-child(2) {
-    animation-delay: 0.2s;
+    animation-delay: 2s;
 }
 .card:nth-child(3) {
-    animation-delay: 0.3s;
+    animation-delay: 3s;
 }
 .card:nth-child(4) {
-    animation-delay: 0.4s;
+    animation-delay: 4s;
 }
 .card:nth-child(5) {
-    animation-delay: 0.5s;
-}
+    animation-delay: 5s;
+} 
 .card:nth-child(6) {
-    animation-delay: 0.6s;
-}
-
-/* Centrare i contenuti della card */
-.card-inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-}
-
-.card-front, .card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    border-radius: 10px;
-}
-
-.card-back {
-    background-color: #8b572a;
-    color: #fff;
-}
-
-.card-front {
-    background-color: rgba(255, 255, 255, 0.42);
-    border: 2px solid #e4a96b;
-    transform: rotateY(180deg);
-    text-align: center;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    padding: 10px;
-}
-
-.card-front h3, .card-back h3 {
-    font-size: 14px; /* Riduciamo il font */
-    margin: 0;
-    color: #333;
-}
-
-.card-front p {
-    font-size: 10px; /* Manteniamo un testo piccolo */
-    margin: 0;
-    color: #333;
-    text-align: center;
+    animation-delay: 6s;
 }
