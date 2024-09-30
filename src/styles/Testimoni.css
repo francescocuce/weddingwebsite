@@ -17,23 +17,31 @@
 .cards-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 colonne fisse */
-    grid-gap: 10px;
+    grid-gap: 20px;
     justify-items: center;
     margin: 0 auto;
 }
 
 /* Stile della card */
 .card {
-    width: 120px; 
-    height: 180px; 
+    width: 150px;
+    height: 200px;
     perspective: 1000px; /* Necessario per l'effetto 3D */
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 15px;
     overflow: hidden;
     opacity: 0; /* Nascondiamo le carte all'inizio */
     transform: translateY(50px); /* Partono un po' più in basso */
-    transition: opacity 1s ease-out, transform 1s ease-out;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
     animation: none; /* Nessuna animazione all'inizio */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Aggiunta di un'ombra leggera */
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+/* Hover Effect - quando l'utente passa sopra la carta */
+.card:hover {
+    transform: translateY(-10px); /* Solleva leggermente la carta */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Ombra più pronunciata */
 }
 
 .testimoni-section.visible .card {
@@ -53,12 +61,109 @@
     }
 }
 
+/* Effetti individuali per ogni carta */
+
+/* Prima carta - scivola da destra */
+.card:nth-child(1) {
+    animation: slide-right 1.5s ease forwards;
+}
+
+@keyframes slide-right {
+    0% {
+        transform: translateX(100%); /* Parte da destra */
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0); /* Arriva al centro */
+        opacity: 1;
+    }
+}
+
+/* Seconda carta - dissolve lentamente */
+.card:nth-child(2) {
+    animation: fade-in 1.5s ease forwards;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Terza carta - scivola dall'alto */
+.card:nth-child(3) {
+    animation: slide-down 1.5s ease forwards;
+}
+
+@keyframes slide-down {
+    0% {
+        transform: translateY(-100%); /* Parte dall'alto */
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0); /* Arriva al centro */
+        opacity: 1;
+    }
+}
+
+/* Quarta carta - scivola da sinistra */
+.card:nth-child(4) {
+    animation: slide-left 1.5s ease forwards;
+}
+
+@keyframes slide-left {
+    0% {
+        transform: translateX(-100%); /* Parte da sinistra */
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0); /* Arriva al centro */
+        opacity: 1;
+    }
+}
+
+/* Quinta carta - dissolve rapidamente */
+.card:nth-child(5) {
+    animation: quick-fade-in 1s ease forwards;
+}
+
+@keyframes quick-fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Sesta carta - scivola dall'alto con rimbalzo */
+.card:nth-child(6) {
+    animation: slide-down-bounce 1.5s ease forwards;
+}
+
+@keyframes slide-down-bounce {
+    0% {
+        transform: translateY(-100%); /* Parte dall'alto */
+        opacity: 0;
+    }
+    80% {
+        transform: translateY(20px); /* Rimbalza leggermente in basso */
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
 /* Mostra inizialmente il retro della carta */
 .card-inner {
     width: 100%;
     height: 100%;
     position: relative;
-    transition: transform 0.8s ease;
+    transition: transform 0.8s ease-in-out;
     transform-style: preserve-3d; /* Necessario per la rotazione 3D */
     transform: rotateY(180deg); /* Le carte partono mostrando il retro */
     display: flex;
@@ -125,24 +230,4 @@
     margin: 0;
     color: #333;
     text-align: center;
-}
-
-/* Ritardo progressivo per l'atterraggio con 1 secondo di differenza */
-.card:nth-child(1) {
-    animation-delay: 0.1s;
-}
-.card:nth-child(2) {
-    animation-delay: 1s;
-}
-.card:nth-child(3) {
-    animation-delay: 2s;
-}
-.card:nth-child(4) {
-    animation-delay: 3s;
-}
-.card:nth-child(5) {
-    animation-delay: 4s;
-}
-.card:nth-child(6) {
-    animation-delay: 5s;
 }
