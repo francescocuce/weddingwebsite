@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css'; // Stili globali dell'app
 import Carousel from './components/Carousel'; // Import del componente carosello
 import Testimoni from './components/Testimoni'; // Import del componente Testimoni
+import Location from './components/Location'; // Import del componente Testimoni
 
 function App() {
     // Funzione per aggiungere l'evento a Google Calendar
@@ -45,6 +46,9 @@ function App() {
 
             {/* Sezione Testimoni */}
             <Testimoni />
+
+            {/* Sezione Location */}
+            <Location />
         </div>
     );
 }

@@ -1,0 +1,77 @@
+/* Container principale della sezione location */
+.location-container {
+    margin: 20px;
+    text-align: center;
+}
+
+/* Sezione specifica per ogni location */
+.location-section {
+    margin-bottom: 40px;
+}
+
+/* Descrizione della location */
+.location-section p {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Layout della sezione: immagine a sinistra, mappa a destra */
+.location-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Stile delle immagini */
+.location-image {
+    width: 50%;
+}
+
+.image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Stile per la mappa */
+.location-map {
+    width: 50%;
+    position: relative;
+}
+
+.map-image {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Container per la mappa e l'icona clicca */
+.map-container {
+    position: relative;
+    display: inline-block;
+}
+
+.click-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    opacity: 0.5; /* Semi-trasparente */
+    animation: fadeInOut 2s infinite; /* Animazione per l'icona */
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 0.3;
+    }
+}

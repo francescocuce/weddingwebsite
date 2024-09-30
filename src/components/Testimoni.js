@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '../styles/Testimoni.css'; // Importa lo stile personalizzato
 import raf from '../assets/TestimoneRaffaele.jpg';
 import gab from '../assets/TestimoneGabriele.jpg';
@@ -17,18 +17,45 @@ const testimoni = [
 ];
 
 const Testimoni = () => {
-    const [flippedCards, setFlippedCards] = useState({}); // Stato per tracciare le carte girate
+    const [flippedCards, setFlippedCards] = useState({}); // Stato per le carte capovolte
+    const [isVisible, setIsVisible] = useState(false); // Stato per l'animazione della sezione
+    const sectionRef = useRef(null); // Riferimento alla sezione
 
-    // Funzione per gestire il clic su una carta
+    // Usa IntersectionObserver per rilevare quando la sezione è visibile
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        setIsVisible(true);
+                        observer.disconnect(); // Una volta visibile, fermiamo l'osservazione
+                    }
+                });
+            },
+            { threshold: 0.2 } // La sezione è considerata visibile quando il 20% di essa è nel viewport
+        );
+
+        if (sectionRef.current) {
+            observer.observe(sectionRef.current);
+        }
+
+        return () => {
+            if (sectionRef.current) {
+                observer.unobserve(sectionRef.current);
+            }
+        };
+    }, []);
+
+    // Funzione per capovolgere una carta
     const handleCardClick = (id) => {
         setFlippedCards((prevState) => ({
             ...prevState,
-            [id]: !prevState[id], // Gira la carta al click
+            [id]: !prevState[id], // Gira la carta
         }));
     };
 
     return (
-        <div className="testimoni-section">
+        <div ref={sectionRef} className={`testimoni-section ${isVisible ? 'visible' : ''}`}>
             <h2>Testimoni</h2>
             <p>Scopri chi sono!</p>
 
@@ -47,7 +74,7 @@ const Testimoni = () => {
                             {/* Fronte della carta */}
                             <div className="card-front">
                                 <h3>{testimone.name}</h3>
-                                <img src={testimone.image} alt={testimone.name}/>
+                                <img src={testimone.image} alt={testimone.name} />
                                 <p>{testimone.parent}</p>
                             </div>
                         </div>
