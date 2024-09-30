@@ -1,4 +1,4 @@
-/* Stile di base per la sezione dei testimoni */
+/* Sezione Testimoni */
 .testimoni-section {
     text-align: center;
     padding: 50px 0;
@@ -13,14 +13,36 @@
     transform: translateY(0);
 }
 
+/* Responsive Grid Layout */
 .cards-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Layout flessibile */
     grid-gap: 20px;
     justify-items: center;
     margin: 0 auto;
 }
 
+/* Per dispositivi mobili come l'iPhone */
+@media (max-width: 768px) {
+    .cards-container {
+        grid-template-columns: repeat(2, 1fr); /* Due colonne su schermi più piccoli */
+        grid-gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cards-container {
+        grid-template-columns: 1fr; /* Una colonna su schermi molto piccoli */
+        grid-gap: 10px;
+    }
+
+    .card {
+        width: 90%; /* Adatta la larghezza per telefoni */
+        margin-bottom: 10px;
+    }
+}
+
+/* Effetto di "atterraggio" con ritardo per le card */
 .card {
     width: 150px;
     height: 180px;
@@ -31,11 +53,39 @@
     opacity: 0;
     transform: translateY(50px);
     transition: opacity 1s ease-out, transform 1s ease-out;
+    animation: landing 1s ease forwards;
 }
 
-.testimoni-section.visible .card {
-    opacity: 1;
-    transform: translateY(0);
+/* Animazione di atterraggio */
+@keyframes landing {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Ritardo progressivo per ogni card */
+.card:nth-child(1) {
+    animation-delay: 0.3s;
+}
+.card:nth-child(2) {
+    animation-delay: 0.6s;
+}
+.card:nth-child(3) {
+    animation-delay: 0.9s;
+}
+.card:nth-child(4) {
+    animation-delay: 1.2s;
+}
+.card:nth-child(5) {
+    animation-delay: 1.5s;
+}
+.card:nth-child(6) {
+    animation-delay: 1.8s;
 }
 
 .card-inner {
