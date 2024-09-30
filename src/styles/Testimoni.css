@@ -143,3 +143,92 @@
 /* Sesta carta - scivola dall'alto con rimbalzo */
 .card:nth-child(6) {
     animation: slide-down-bounce 1.5s ease forwards;
+}
+
+@keyframes slide-down-bounce {
+    0% {
+        transform: translateY(-100%); /* Parte dall'alto */
+        opacity: 0;
+    }
+    80% {
+        transform: translateY(10%); /* Rimbalza leggermente in basso */
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Mostra inizialmente il retro della carta */
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.8s ease-in-out;
+    transform-style: preserve-3d; /* Necessario per la rotazione 3D */
+    transform: rotateY(180deg); /* Le carte partono mostrando il retro */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra verticalmente */
+    align-items: center; /* Centra orizzontalmente */
+}
+
+/* Ruota la carta quando viene cliccata */
+.card.flipped .card-inner {
+    transform: rotateY(0deg); /* Gira per mostrare il fronte */
+}
+
+/* Stile delle facce della card */
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Nascondi la faccia non visibile */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 5%; /* Percentuali per bordi arrotondati */
+}
+
+/* Aggiorniamo lo sfondo della faccia posteriore con un colore visibile */
+.card-back {
+    background-color: #8B572A; /* Colore solido */
+    color: #fff;
+    transform: rotateY(180deg); /* Rotazione del retro della card */
+}
+
+.card-front {
+    background-color: rgba(255, 255, 255, 0.42); /* Fronte della carta può restare trasparente */
+    border: 2px solid #e4a96b;
+    text-align: center;
+    border-radius: 5%;
+    box-shadow: 0 1vh 3vh rgba(0, 0, 0, 0.2);
+    padding: 5%;
+}
+
+/* Centrare l'immagine */
+.card img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    height: 40%;
+    object-fit: cover;
+    border-radius: 5%;
+    margin-top: 5%;
+}
+
+/* Stile del testo */
+.card-front h3, .card-back h3 {
+    font-size: 2.5vh;
+    margin: 0;
+    color: #fff; /* Testo chiaro per il retro */
+}
+
+.card-front p {
+    font-size: 1.5vh;
+    margin: 0;
+    color: #333;
+    text-align: center;
+}
