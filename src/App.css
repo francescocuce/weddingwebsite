@@ -1,38 +1,71 @@
-.App {
+/* Barra superiore */
+.navbar {
+  background-color: #e49d3ba3; /* Colore scuro per un contrasto elegante */
+  color: #f7e7ce; /* Testo avorio/champagne */
+  padding: 20px 0;
   text-align: center;
+  font-family: 'Dancing Script', cursive; /* Aggiungi il font calligrafico */
+  font-size: 24px;
+  letter-spacing: 2px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Leggera ombra per eleganza */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.navbar h1 {
+  margin: 0;
+  font-size: 36px; /* Regola la dimensione del testo */
+  font-weight: 700;
+  color: #f7e7ce;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Testo Save the Date */
+.save-the-date {
+  text-align: center;
+  margin: 30px 0; /* Spazio sopra e sotto il testo */
+  font-family: 'Dancing Script', cursive; /* Aggiungi il font calligrafico */
+  color: #333; /* Colore scuro */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.save-the-date h2 {
+  font-size: 36px; /* Dimensione del testo per Save the Date */
+  margin: 0;
 }
 
-.App-link {
-  color: #61dafb;
+.save-the-date p {
+  font-size: 28px; /* Dimensione del testo per la data */
+  margin: 5px 0 20px 0; /* Piccolo margine sotto la data */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+/* Link Aggiungi al Calendario (mascherato come pulsante) */
+.calendar-button {
+  display: inline-block;
+  background-color: #8b572a; /* Marrone caldo */
+  color: #f7e7ce; /* Champagne/Avorio */
+  border: none;
+  padding: 15px 30px;
+  font-size: 18px;
+  font-family: 'Dancing Script', cursive;
+  text-decoration: none; /* Rimuovi la sottolineatura del link */
+  cursor: pointer;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+  position: relative;
+}
+
+.calendar-button:hover {
+  background-color: #f7e7ce;
+  color: #8b572a; /* Testo scuro */
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Aggiungiamo una media query per schermi più piccoli */
+@media (max-width: 600px) {
+  .calendar-button {
+    font-size: 16px;
+    padding: 10px 20px;
   }
 }

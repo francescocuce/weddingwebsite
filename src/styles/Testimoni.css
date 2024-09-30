@@ -1,0 +1,118 @@
+.testimoni-section {
+    text-align: center; /* Allinea il testo (titolo, sottotitolo) al centro della sezione */
+    padding: 50px 0; /* Aggiunge spazio (padding) sopra e sotto la sezione */
+    font-family: 'Dancing Script', cursive; /* Aggiungi il font calligrafico */
+}
+
+.testimoni-section h2 {
+    font-size: 36px; /* Dimensione del testo per Testimoni */
+}
+.testimoni-section p {
+    font-size: 30px; /* Dimensione del testo per Testimoni */
+}
+
+.cards-container {
+    display: flex; /* Usa Flexbox per allineare le carte */
+    justify-content: center; /* Centra le carte orizzontalmente */
+    flex-wrap: wrap; /* Permette alle carte di andare su più righe quando lo spazio è insufficiente */
+    gap: 20px; /* Spazio tra le carte */
+}
+
+.card {
+    width: 150px; /* Larghezza di ogni carta */
+    height: 180px; /* Altezza di ogni carta */
+    perspective: 1000px; /* Aggiunge profondità per l'effetto 3D */
+    cursor: pointer; /* Mostra il cursore come "puntatore" per indicare che la carta è cliccabile */
+    border-radius: 10px; /* Arrotonda gli angoli della carta */
+    overflow: hidden; /* Nasconde tutto ciò che va oltre i limiti della carta */
+}
+
+.card-inner {
+    width: 100%; /* La larghezza interna è pari alla carta */
+    height: 100%; /* L'altezza interna è pari alla carta */
+    position: relative; /* Posizionamento relativo per gestire il fronte e il retro della carta */
+    transition: transform 0.8s ease; /* Durata e fluidità della transizione per la rotazione */
+    transform-style: preserve-3d; /* Mantiene l'effetto 3D quando si gira la carta */
+    display: flex; /* Usa Flexbox per centrare il contenuto della carta */
+    justify-content: center; /* Centra il contenuto orizzontalmente */
+    align-items: center; /* Centra il contenuto verticalmente */
+    border-radius: 10px; /* Arrotonda gli angoli anche per l'interno della carta */
+}
+
+.card.flipped .card-inner {
+    transform: rotateY(180deg); /* Gira la carta di 180 gradi sull'asse Y */
+}
+
+.card-front, .card-back {
+    position: absolute; /* Posizione assoluta per sovrapporre fronte e retro della carta */
+    width: 100%; /* La larghezza copre tutta la carta */
+    height: 100%; /* L'altezza copre tutta la carta */
+    backface-visibility: hidden; /* Nasconde il lato opposto quando la carta è girata */
+    display: flex; /* Usa Flexbox per allineare il contenuto al centro */
+    justify-content: center; /* Centra orizzontalmente il contenuto */
+    align-items: center; /* Centra verticalmente il contenuto */
+    flex-direction: column; /* Dispone il contenuto (testo, immagini) in colonna */
+    border-radius: 10px; /* Arrotonda gli angoli di fronte e retro */
+}
+
+.card-back {
+    background-color: #8b572a; /* Marrone scuro per contrasto */
+    color: #fff; /* Testo bianco */
+}
+
+.card-back h3 {
+    font-size: 18px; /* Dimensione del testo sul retro della carta */
+    text-align: center; /* Centra il testo sul retro */
+}
+
+.card-front {
+    background-color: rgba(255, 255, 255, 0.42); /* Beige chiaro per il fronte */
+    border: 2px solid #e4a96b; /* Bordo più vivace, tono dorato */
+    transform: rotateY(180deg); /* Inizialmente il fronte è girato di 180 gradi */
+    text-align: center; /* Centra il contenuto (testo, immagini) al centro */
+    border-radius: 10px; /* Arrotonda gli angoli del fronte della carta */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Aggiunge ombra per dare profondità alla carta */
+    padding: 10px; /* Spazio interno (padding) per dare respiro al contenuto */
+    display: flex; /* Usa Flexbox per allineare il contenuto all'interno */
+    flex-direction: column; /* Dispone l'immagine e il testo in colonna */
+    justify-content: center; /* Centra il contenuto orizzontalmente */
+    align-items: center; /* Centra il contenuto verticalmente */
+}
+
+.card-front img {
+    width: 80px; /* Larghezza dell'immagine del testimone */
+    height: 100px; /* Altezza dell'immagine del testimone */
+    object-fit: cover; /* Adatta l'immagine alle dimensioni mantenendo le proporzioni */
+    border-radius: 10px; /* Rende l'immagine circolare */
+    margin-bottom: 10px; /* Aggiunge spazio sotto l'immagine */
+    margin-top: 10px; /* Aggiunge spazio sopra l'immagine */
+}
+
+.card-front h3 {
+    font-size: 16px; /* Dimensione del nome del testimone */
+    margin: 0; /* Rimuove il margine superiore e inferiore */
+    color: #333; /* Colore del testo del nome */
+    text-align: center; /* Centra il testo */
+}
+
+.card-front p {
+    font-size: 10px;
+    margin: 0; /* Rimuove il margine superiore e inferiore */
+    color: #333; /* Colore del testo del nome */
+    text-align: center; /* Centra il testo */
+    font-family: -apple-system, system-ui;
+}
+
+/* Media query per dispositivi mobili */
+@media (max-width: 768px) {
+    .cards-container {
+        flex-direction: row; /* Mantiene le carte in riga orizzontale, ma permettiamo il wrapping */
+        justify-content: center; /* Centra le carte */
+        gap: 15px; /* Riduce lo spazio tra le carte per ottimizzare lo spazio su mobile */
+    }
+
+    .card {
+        width: calc(33.33% - 30px); /* Imposta la larghezza di ogni carta a circa 1/3 della larghezza disponibile */
+        margin: 10px 0; /* Aggiunge margine sopra e sotto per dare respiro alle righe di carte */
+    }
+}
