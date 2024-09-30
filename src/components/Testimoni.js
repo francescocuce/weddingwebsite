@@ -33,7 +33,7 @@ const Testimoni = () => {
                     }
                 });
             },
-            { threshold: 0.5 } // La sezione è considerata visibile quando il 20% di essa è nel viewport
+            { threshold: 1 } // La sezione è considerata visibile quando il 20% di essa è nel viewport
         );
 
         const currentSectionRef = sectionRef.current;
@@ -49,32 +49,30 @@ const Testimoni = () => {
         };
     }, []);
 
-    // Funzione per capovolgere una carta
-    const handleCardClick = (id) => {
-        setFlippedCards((prevState) => ({
-            ...prevState,
-            [id]: !prevState[id], // Gira la carta
-        }));
-    };
-
     return (
-        <div ref={sectionRef} className={`testimoni-section ${isVisible ? 'visible' : ''}`}>
+        <div ref={sectionRef} className="testimoni-section">
             <h2>Testimoni</h2>
             <p>Scopri chi sono!</p>
 
             <div className="cards-container">
-                {testimoni.map((testimone) => (
+                {testimoni.map((testimone, index) => (
                     <div
                         key={testimone.id}
-                        className={`card ${flippedCards[testimone.id] ? 'flipped' : ''}`} // Aggiunge la classe 'flipped' se la carta è girata
-                        onClick={() => handleCardClick(testimone.id)}
+                        className={`card ${isVisible ? 'visible' : 'hidden'}`}
+                        style={{
+                            animationName:
+                                index === 0 ? (isVisible ? 'appear-right' : 'disappear-right') :
+                                index === 1 ? (isVisible ? 'appear-fade' : 'disappear-fade') :
+                                index === 2 ? (isVisible ? 'appear-down' : 'disappear-up') :
+                                index === 3 ? (isVisible ? 'appear-left' : 'disappear-left') :
+                                index === 4 ? (isVisible ? 'appear-quick-fade' : 'disappear-quick-fade') :
+                                (isVisible ? 'appear-bounce' : 'disappear-bounce'),
+                        }}
                     >
                         <div className="card-inner">
-                            {/* Retro della carta */}
                             <div className="card-back">
                                 <h3>{testimone.type}</h3>
                             </div>
-                            {/* Fronte della carta */}
                             <div className="card-front">
                                 <h3>{testimone.name}</h3>
                                 <img src={testimone.image} alt={testimone.name} />
@@ -84,7 +82,7 @@ const Testimoni = () => {
                     </div>
                 ))}
             </div>
-        </div> 
+        </div>
     );
 };
 
