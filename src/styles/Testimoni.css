@@ -13,39 +13,33 @@
     transform: translateY(0);
 }
 
-/* Responsive Grid Layout */
+/* Layout a 3 colonne, 2 righe */
 .cards-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Layout flessibile */
+    grid-template-columns: repeat(3, 1fr); /* 3 colonne */
     grid-gap: 20px;
     justify-items: center;
     margin: 0 auto;
 }
 
-/* Per dispositivi mobili come l'iPhone */
+/* Responsività - 2 colonne su schermi più piccoli */
 @media (max-width: 768px) {
     .cards-container {
-        grid-template-columns: repeat(2, 1fr); /* Due colonne su schermi più piccoli */
-        grid-gap: 10px;
+        grid-template-columns: repeat(2, 1fr); /* 2 colonne su schermi più piccoli */
     }
 }
 
+/* Una sola colonna su schermi molto piccoli */
 @media (max-width: 480px) {
     .cards-container {
         grid-template-columns: 1fr; /* Una colonna su schermi molto piccoli */
-        grid-gap: 10px;
-    }
-
-    .card {
-        width: 90%; /* Adatta la larghezza per telefoni */
-        margin-bottom: 10px;
     }
 }
 
-/* Effetto di "atterraggio" con ritardo per le card */
+/* Stile della card */
 .card {
     width: 150px;
-    height: 180px;
+    height: 220px;
     perspective: 1000px;
     cursor: pointer;
     border-radius: 10px;
@@ -56,7 +50,7 @@
     animation: landing 1s ease forwards;
 }
 
-/* Animazione di atterraggio */
+/* Effetto di atterraggio */
 @keyframes landing {
     0% {
         opacity: 0;
@@ -70,22 +64,22 @@
 
 /* Ritardo progressivo per ogni card */
 .card:nth-child(1) {
-    animation-delay: 0.3s;
+    animation-delay: 0.1s;
 }
 .card:nth-child(2) {
-    animation-delay: 0.6s;
+    animation-delay: 0.2s;
 }
 .card:nth-child(3) {
-    animation-delay: 0.9s;
+    animation-delay: 0.3s;
 }
 .card:nth-child(4) {
-    animation-delay: 1.2s;
+    animation-delay: 0.4s;
 }
 .card:nth-child(5) {
-    animation-delay: 1.5s;
+    animation-delay: 0.5s;
 }
 .card:nth-child(6) {
-    animation-delay: 1.8s;
+    animation-delay: 0.6s;
 }
 
 .card-inner {
@@ -112,11 +106,13 @@
     border-radius: 10px;
 }
 
+/* Stile del retro della card */
 .card-back {
     background-color: #8b572a;
     color: #fff;
 }
 
+/* Stile del fronte della card */
 .card-front {
     background-color: rgba(255, 255, 255, 0.42);
     border: 2px solid #e4a96b;
@@ -131,6 +127,7 @@
     align-items: center;
 }
 
+/* Stile immagine centrata */
 .card-front img {
     width: 80px;
     height: 100px;
@@ -138,6 +135,9 @@
     border-radius: 10px;
     margin-bottom: 10px;
     margin-top: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .card-front h3, .card-back h3 {
